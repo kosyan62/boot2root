@@ -29,6 +29,35 @@ And we drop full code with PHP method base64_decode in p.php, start nc, open p.p
 
 Now we need to explore system. We look for /home directory, there is dir LOOKATME which contains file password. NICE user login/password lmezard:G!@M6f4Eatau{sF"
 
-	
+When we logged as lmezard, we found files in his home directory. 'fun' is tar archive, so it will be little more convvenient, to work with it on local machine.
+We just copy 'fun' to /forum/templates_c and use chmod 777 (lol). Now we can download file with wget on local machine.
+
+Then we find a lot pcap files in dir. To deobfuscate it I use sh script. When job is done we use enfile as C-code, compile it and have password, which needed to be cripted with sha-256. hmmm... use sha256 and ssh login/password laurie:330b845f32185747e4f8ca15d40ca59796035c89ea809fb5d30f4da83ecf45a4
+NICE
+
+Now we fnally can connect to machine via ssh. We have README, which says we must defuse the bomb and 'bomb'-ELF exutable.
+We haven't passion to start binaries named bomb so let's look to strings. We can see all 'phases', that we need to defuse bomb.
+We had hint in README, so we easily go to stage two. Let's find all passwords with hint. I thought...
+But it doesnt work for 2nd level. OK, we download radare2, and here we go.
+
+2nd level. 
+We have two simple functions. First, we read six numbers from stdin. If numbers count not equal six, we exlode bomb.
+Simply run debugger and watch at cmp instruction. At the end we have 1 2 6 24 120 720
+
+3d level.
+Func want t numbers and letter. OKAY. It is only begin. We see a lot of jumps fahrer from begin. There is switch-case construction.
+It depend from first number value. So we try everything from first condition and we're good.
+In the HINT our letter is b, so second group of values is ours. 1 b 214. OK
+
+4d level.
+Owh. We're bad. We have recoursive function here. It will be hard. 
+We have internet, so we can install ghydra with 'r2pm --ci r2ghydra'.
+Я не смог установить гидру и там пищдец, меня это заебало внатуре ахахах
+
+
+
+
+And in thor acc we have turtle and README. README doesn't tell anything usefull, so we look at file. It's text with directions of tutle. In Mother Russia we did this things it school.ON PAPER. And now We just write python script.
+
 
  
