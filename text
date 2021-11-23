@@ -1,0 +1,34 @@
+We make network connection in VBox as "Bridge" or "Virtual network"
+After it we can scan ourselves with nmap to find Boot2root ip and open ports.
+
+We found web site under this server.
+So we scan 80 and 443 with dirb to find directories. It is output:
+
+Now we have three new points: /fonts (http) and /phpmyadmin, /webmail, /forum (https).
+- Fonts are not interesting for us
+- phpmyadmin request creditnails. We will not brute it((
+- webmail same as above.
+- forum works and we can find some useful thigs inside.
+
+On form we see theme by lmezard called "Probleme login?".
+It's log and we search for some info. Here we have one string, that seems like password,
+if we try it to log in forum, we will succeed. Forum login/pass - lmezard:!q\]Ej?*5K5cy*AJ
+
+After it we can try to Contact and now have lmezard's E-mail adress. If we try to use it to auth /webmail, we will succeed again.
+/webmail login/pass - laurie@borntosec.net:!q\]Ej?*5K5cy*AJ
+
+In mailbox we have two messages, one of them includes creds for something called "database".
+It is /phpmyadmin login/pass root/Fg-'kKXBj87E:aJ$
+
+Now is time for Explotation. In phpmyadmin we can make unlimited SQL queries and it means that we could send a payload into a file.
+We only should find place where we have access to write files. But we have this place. Look again at dirb output.
+Trying several directories and drop php file: In one of directories var/www/forum/templates_c we have enougth rights.
+
+Ok. Now we need reverse shell, we can generate it in base64 with help of 'https://www.revshells.com/'.
+And we drop full code with PHP method base64_decode in p.php, start nc, open p.php in browser, improve our shell with python.
+
+Now we need to explore system. We look for /home directory, there is dir LOOKATME which contains file password. NICE user login/password lmezard:G!@M6f4Eatau{sF"
+
+	
+
+ 

@@ -1,0 +1,299 @@
+
+-----------------
+DIRB v2.22    
+By The Dark Raver
+-----------------
+
+OUTPUT_FILE: boot2root/dir_https
+START_TIME: Mon Nov 22 05:40:06 2021
+URL_BASE: https://192.168.56.101/
+WORDLIST_FILES: /usr/share/dirb/wordlists/big.txt
+
+-----------------
+
+GENERATED WORDS: 20458
+
+---- Scanning URL: https://192.168.56.101/ ----
++ https://192.168.56.101/cgi-bin/ (CODE:403|SIZE:291)
+==> DIRECTORY: https://192.168.56.101/forum/
+==> DIRECTORY: https://192.168.56.101/phpmyadmin/
++ https://192.168.56.101/server-status (CODE:403|SIZE:296)
+==> DIRECTORY: https://192.168.56.101/webmail/
+
+---- Entering directory: https://192.168.56.101/forum/ ----
++ https://192.168.56.101/forum/backup (CODE:403|SIZE:295)
++ https://192.168.56.101/forum/config (CODE:403|SIZE:295)
+==> DIRECTORY: https://192.168.56.101/forum/images/
+==> DIRECTORY: https://192.168.56.101/forum/includes/
++ https://192.168.56.101/forum/index (CODE:200|SIZE:4935)
+==> DIRECTORY: https://192.168.56.101/forum/js/
+==> DIRECTORY: https://192.168.56.101/forum/lang/
+==> DIRECTORY: https://192.168.56.101/forum/modules/
+==> DIRECTORY: https://192.168.56.101/forum/templates_c/
+==> DIRECTORY: https://192.168.56.101/forum/themes/
+==> DIRECTORY: https://192.168.56.101/forum/update/
+
+---- Entering directory: https://192.168.56.101/phpmyadmin/ ----
++ https://192.168.56.101/phpmyadmin/favicon.ico (CODE:200|SIZE:18902)
+==> DIRECTORY: https://192.168.56.101/phpmyadmin/js/
++ https://192.168.56.101/phpmyadmin/libraries (CODE:403|SIZE:303)
+==> DIRECTORY: https://192.168.56.101/phpmyadmin/locale/
+==> DIRECTORY: https://192.168.56.101/phpmyadmin/pmd/
++ https://192.168.56.101/phpmyadmin/setup (CODE:401|SIZE:482)
+==> DIRECTORY: https://192.168.56.101/phpmyadmin/themes/
+
+---- Entering directory: https://192.168.56.101/webmail/ ----
++ https://192.168.56.101/webmail/class (CODE:403|SIZE:296)
+==> DIRECTORY: https://192.168.56.101/webmail/config/
++ https://192.168.56.101/webmail/functions (CODE:403|SIZE:300)
++ https://192.168.56.101/webmail/help (CODE:403|SIZE:295)
+==> DIRECTORY: https://192.168.56.101/webmail/images/
++ https://192.168.56.101/webmail/include (CODE:403|SIZE:298)
++ https://192.168.56.101/webmail/locale (CODE:403|SIZE:297)
+==> DIRECTORY: https://192.168.56.101/webmail/plugins/
++ https://192.168.56.101/webmail/po (CODE:403|SIZE:293)
+==> DIRECTORY: https://192.168.56.101/webmail/src/
+==> DIRECTORY: https://192.168.56.101/webmail/themes/
+
+---- Entering directory: https://192.168.56.101/forum/images/ ----
+(!) WARNING: Directory IS LISTABLE. No need to scan it.
+    (Use mode '-w' if you want to scan it anyway)
+
+---- Entering directory: https://192.168.56.101/forum/includes/ ----
+(!) WARNING: Directory IS LISTABLE. No need to scan it.
+    (Use mode '-w' if you want to scan it anyway)
+
+---- Entering directory: https://192.168.56.101/forum/js/ ----
+(!) WARNING: Directory IS LISTABLE. No need to scan it.
+    (Use mode '-w' if you want to scan it anyway)
+
+---- Entering directory: https://192.168.56.101/forum/lang/ ----
+(!) WARNING: Directory IS LISTABLE. No need to scan it.
+    (Use mode '-w' if you want to scan it anyway)
+
+---- Entering directory: https://192.168.56.101/forum/modules/ ----
+(!) WARNING: Directory IS LISTABLE. No need to scan it.
+    (Use mode '-w' if you want to scan it anyway)
+
+---- Entering directory: https://192.168.56.101/forum/templates_c/ ----
+(!) WARNING: Directory IS LISTABLE. No need to scan it.
+    (Use mode '-w' if you want to scan it anyway)
+
+---- Entering directory: https://192.168.56.101/forum/themes/ ----
+(!) WARNING: Directory IS LISTABLE. No need to scan it.
+    (Use mode '-w' if you want to scan it anyway)
+
+---- Entering directory: https://192.168.56.101/forum/update/ ----
+(!) WARNING: Directory IS LISTABLE. No need to scan it.
+    (Use mode '-w' if you want to scan it anyway)
+
+---- Entering directory: https://192.168.56.101/phpmyadmin/js/ ----
+==> DIRECTORY: https://192.168.56.101/phpmyadmin/js/jquery/
+
+---- Entering directory: https://192.168.56.101/phpmyadmin/locale/ ----
+==> DIRECTORY: https://192.168.56.101/phpmyadmin/locale/ar/
+==> DIRECTORY: https://192.168.56.101/phpmyadmin/locale/be/
+==> DIRECTORY: https://192.168.56.101/phpmyadmin/locale/bg/
+==> DIRECTORY: https://192.168.56.101/phpmyadmin/locale/bn/
+==> DIRECTORY: https://192.168.56.101/phpmyadmin/locale/ca/
+==> DIRECTORY: https://192.168.56.101/phpmyadmin/locale/cs/
+==> DIRECTORY: https://192.168.56.101/phpmyadmin/locale/da/
+==> DIRECTORY: https://192.168.56.101/phpmyadmin/locale/de/
+==> DIRECTORY: https://192.168.56.101/phpmyadmin/locale/el/
+==> DIRECTORY: https://192.168.56.101/phpmyadmin/locale/es/
+==> DIRECTORY: https://192.168.56.101/phpmyadmin/locale/et/
+==> DIRECTORY: https://192.168.56.101/phpmyadmin/locale/fi/
+==> DIRECTORY: https://192.168.56.101/phpmyadmin/locale/fr/
+==> DIRECTORY: https://192.168.56.101/phpmyadmin/locale/gl/
+==> DIRECTORY: https://192.168.56.101/phpmyadmin/locale/hi/
+==> DIRECTORY: https://192.168.56.101/phpmyadmin/locale/hr/
+==> DIRECTORY: https://192.168.56.101/phpmyadmin/locale/hu/
+==> DIRECTORY: https://192.168.56.101/phpmyadmin/locale/id/
+==> DIRECTORY: https://192.168.56.101/phpmyadmin/locale/it/
+==> DIRECTORY: https://192.168.56.101/phpmyadmin/locale/ja/
+==> DIRECTORY: https://192.168.56.101/phpmyadmin/locale/ka/
+==> DIRECTORY: https://192.168.56.101/phpmyadmin/locale/lt/
+==> DIRECTORY: https://192.168.56.101/phpmyadmin/locale/mn/
+==> DIRECTORY: https://192.168.56.101/phpmyadmin/locale/nb/
+==> DIRECTORY: https://192.168.56.101/phpmyadmin/locale/nl/
+==> DIRECTORY: https://192.168.56.101/phpmyadmin/locale/pl/
+==> DIRECTORY: https://192.168.56.101/phpmyadmin/locale/pt_BR/
+==> DIRECTORY: https://192.168.56.101/phpmyadmin/locale/ro/
+==> DIRECTORY: https://192.168.56.101/phpmyadmin/locale/ru/
+==> DIRECTORY: https://192.168.56.101/phpmyadmin/locale/si/
+==> DIRECTORY: https://192.168.56.101/phpmyadmin/locale/sk/
+==> DIRECTORY: https://192.168.56.101/phpmyadmin/locale/sl/
+==> DIRECTORY: https://192.168.56.101/phpmyadmin/locale/sr/
+==> DIRECTORY: https://192.168.56.101/phpmyadmin/locale/sv/
+==> DIRECTORY: https://192.168.56.101/phpmyadmin/locale/tr/
+==> DIRECTORY: https://192.168.56.101/phpmyadmin/locale/uk/
+==> DIRECTORY: https://192.168.56.101/phpmyadmin/locale/uz/
+==> DIRECTORY: https://192.168.56.101/phpmyadmin/locale/zh_CN/
+==> DIRECTORY: https://192.168.56.101/phpmyadmin/locale/zh_TW/
+
+---- Entering directory: https://192.168.56.101/phpmyadmin/pmd/ ----
+==> DIRECTORY: https://192.168.56.101/phpmyadmin/pmd/images/
+==> DIRECTORY: https://192.168.56.101/phpmyadmin/pmd/scripts/
+==> DIRECTORY: https://192.168.56.101/phpmyadmin/pmd/styles/
+
+---- Entering directory: https://192.168.56.101/phpmyadmin/themes/ ----
+==> DIRECTORY: https://192.168.56.101/phpmyadmin/themes/original/
+
+---- Entering directory: https://192.168.56.101/webmail/config/ ----
+
+---- Entering directory: https://192.168.56.101/webmail/images/ ----
+
+---- Entering directory: https://192.168.56.101/webmail/plugins/ ----
+==> DIRECTORY: https://192.168.56.101/webmail/plugins/administrator/
+==> DIRECTORY: https://192.168.56.101/webmail/plugins/bug_report/
+==> DIRECTORY: https://192.168.56.101/webmail/plugins/calendar/
+==> DIRECTORY: https://192.168.56.101/webmail/plugins/demo/
+==> DIRECTORY: https://192.168.56.101/webmail/plugins/filters/
+==> DIRECTORY: https://192.168.56.101/webmail/plugins/fortune/
+==> DIRECTORY: https://192.168.56.101/webmail/plugins/info/
+==> DIRECTORY: https://192.168.56.101/webmail/plugins/test/
+==> DIRECTORY: https://192.168.56.101/webmail/plugins/translate/
+
+---- Entering directory: https://192.168.56.101/webmail/src/ ----
+
+---- Entering directory: https://192.168.56.101/webmail/themes/ ----
+==> DIRECTORY: https://192.168.56.101/webmail/themes/css/
+
+---- Entering directory: https://192.168.56.101/phpmyadmin/js/jquery/ ----
+
+---- Entering directory: https://192.168.56.101/phpmyadmin/locale/ar/ ----
+
+---- Entering directory: https://192.168.56.101/phpmyadmin/locale/be/ ----
+
+---- Entering directory: https://192.168.56.101/phpmyadmin/locale/bg/ ----
+
+---- Entering directory: https://192.168.56.101/phpmyadmin/locale/bn/ ----
+
+---- Entering directory: https://192.168.56.101/phpmyadmin/locale/ca/ ----
+
+---- Entering directory: https://192.168.56.101/phpmyadmin/locale/cs/ ----
+
+---- Entering directory: https://192.168.56.101/phpmyadmin/locale/da/ ----
+
+---- Entering directory: https://192.168.56.101/phpmyadmin/locale/de/ ----
+
+---- Entering directory: https://192.168.56.101/phpmyadmin/locale/el/ ----
+
+---- Entering directory: https://192.168.56.101/phpmyadmin/locale/es/ ----
+
+---- Entering directory: https://192.168.56.101/phpmyadmin/locale/et/ ----
+
+---- Entering directory: https://192.168.56.101/phpmyadmin/locale/fi/ ----
+
+---- Entering directory: https://192.168.56.101/phpmyadmin/locale/fr/ ----
+
+---- Entering directory: https://192.168.56.101/phpmyadmin/locale/gl/ ----
+
+---- Entering directory: https://192.168.56.101/phpmyadmin/locale/hi/ ----
+
+---- Entering directory: https://192.168.56.101/phpmyadmin/locale/hr/ ----
+
+---- Entering directory: https://192.168.56.101/phpmyadmin/locale/hu/ ----
+
+---- Entering directory: https://192.168.56.101/phpmyadmin/locale/id/ ----
+
+---- Entering directory: https://192.168.56.101/phpmyadmin/locale/it/ ----
+
+---- Entering directory: https://192.168.56.101/phpmyadmin/locale/ja/ ----
+
+---- Entering directory: https://192.168.56.101/phpmyadmin/locale/ka/ ----
+
+---- Entering directory: https://192.168.56.101/phpmyadmin/locale/lt/ ----
+
+---- Entering directory: https://192.168.56.101/phpmyadmin/locale/mn/ ----
+
+---- Entering directory: https://192.168.56.101/phpmyadmin/locale/nb/ ----
+
+---- Entering directory: https://192.168.56.101/phpmyadmin/locale/nl/ ----
+
+---- Entering directory: https://192.168.56.101/phpmyadmin/locale/pl/ ----
+
+---- Entering directory: https://192.168.56.101/phpmyadmin/locale/pt_BR/ ----
+
+---- Entering directory: https://192.168.56.101/phpmyadmin/locale/ro/ ----
+
+---- Entering directory: https://192.168.56.101/phpmyadmin/locale/ru/ ----
+
+---- Entering directory: https://192.168.56.101/phpmyadmin/locale/si/ ----
+
+---- Entering directory: https://192.168.56.101/phpmyadmin/locale/sk/ ----
+
+---- Entering directory: https://192.168.56.101/phpmyadmin/locale/sl/ ----
+
+---- Entering directory: https://192.168.56.101/phpmyadmin/locale/sr/ ----
+
+---- Entering directory: https://192.168.56.101/phpmyadmin/locale/sv/ ----
+
+---- Entering directory: https://192.168.56.101/phpmyadmin/locale/tr/ ----
+
+---- Entering directory: https://192.168.56.101/phpmyadmin/locale/uk/ ----
+
+---- Entering directory: https://192.168.56.101/phpmyadmin/locale/uz/ ----
+
+---- Entering directory: https://192.168.56.101/phpmyadmin/locale/zh_CN/ ----
+
+---- Entering directory: https://192.168.56.101/phpmyadmin/locale/zh_TW/ ----
+
+---- Entering directory: https://192.168.56.101/phpmyadmin/pmd/images/ ----
++ https://192.168.56.101/phpmyadmin/pmd/images/favicon.ico (CODE:200|SIZE:1150)
+
+---- Entering directory: https://192.168.56.101/phpmyadmin/pmd/scripts/ ----
+
+---- Entering directory: https://192.168.56.101/phpmyadmin/pmd/styles/ ----
+==> DIRECTORY: https://192.168.56.101/phpmyadmin/pmd/styles/default/
+
+---- Entering directory: https://192.168.56.101/phpmyadmin/themes/original/ ----
+==> DIRECTORY: https://192.168.56.101/phpmyadmin/themes/original/css/
+==> DIRECTORY: https://192.168.56.101/phpmyadmin/themes/original/img/
+==> DIRECTORY: https://192.168.56.101/phpmyadmin/themes/original/jquery/
+
+---- Entering directory: https://192.168.56.101/webmail/plugins/administrator/ ----
+
+---- Entering directory: https://192.168.56.101/webmail/plugins/bug_report/ ----
++ https://192.168.56.101/webmail/plugins/bug_report/README (CODE:200|SIZE:2335)
+
+---- Entering directory: https://192.168.56.101/webmail/plugins/calendar/ ----
++ https://192.168.56.101/webmail/plugins/calendar/README (CODE:200|SIZE:887)
+
+---- Entering directory: https://192.168.56.101/webmail/plugins/demo/ ----
++ https://192.168.56.101/webmail/plugins/demo/README (CODE:200|SIZE:837)
+
+---- Entering directory: https://192.168.56.101/webmail/plugins/filters/ ----
++ https://192.168.56.101/webmail/plugins/filters/README (CODE:200|SIZE:2672)
+
+---- Entering directory: https://192.168.56.101/webmail/plugins/fortune/ ----
++ https://192.168.56.101/webmail/plugins/fortune/README (CODE:200|SIZE:485)
+
+---- Entering directory: https://192.168.56.101/webmail/plugins/info/ ----
++ https://192.168.56.101/webmail/plugins/info/README (CODE:200|SIZE:1632)
+
+---- Entering directory: https://192.168.56.101/webmail/plugins/test/ ----
++ https://192.168.56.101/webmail/plugins/test/README (CODE:200|SIZE:505)
+
+---- Entering directory: https://192.168.56.101/webmail/plugins/translate/ ----
++ https://192.168.56.101/webmail/plugins/translate/README (CODE:200|SIZE:1730)
+
+---- Entering directory: https://192.168.56.101/webmail/themes/css/ ----
+
+---- Entering directory: https://192.168.56.101/phpmyadmin/pmd/styles/default/ ----
+==> DIRECTORY: https://192.168.56.101/phpmyadmin/pmd/styles/default/images/
+
+---- Entering directory: https://192.168.56.101/phpmyadmin/themes/original/css/ ----
+
+---- Entering directory: https://192.168.56.101/phpmyadmin/themes/original/img/ ----
+
+---- Entering directory: https://192.168.56.101/phpmyadmin/themes/original/jquery/ ----
+==> DIRECTORY: https://192.168.56.101/phpmyadmin/themes/original/jquery/images/
+
+---- Entering directory: https://192.168.56.101/phpmyadmin/pmd/styles/default/images/ ----
+
+---- Entering directory: https://192.168.56.101/phpmyadmin/themes/original/jquery/images/ ----
+
+-----------------
+END_TIME: Mon Nov 22 05:52:32 2021
+DOWNLOADED: 1493434 - FOUND: 23
