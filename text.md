@@ -71,7 +71,7 @@ Simply run debugger and watch at cmp instruction. At the end we have 1 2 6 24 12
 ![l2_read_six_nums](screenshots/bomb/l2_read_six_nums.png)
 
 3d level.
-Func want t numbers and letter. OKAY. It is only begin. We see a lot of jumps fahrer from begin. There is switch-case construction.
+Func want two numbers and letter. OKAY. It is only begin. We see a lot of jumps fahrer from start. There is switch-case construction.
 It depend from first number value. So we try everything from first condition and we're good.
 In the HINT our letter is b, so second group of values is ours. 1 b 214. OK
 
@@ -81,9 +81,19 @@ In the HINT our letter is b, so second group of values is ours. 1 b 214. OK
 4th level.
 Owh. We're bad. We have recoursive function here. It will be hard. 
 We have internet, so we can install ghydra with 'r2pm --ci r2ghydra'.
-Я не смог установить гидру и там пищдец, меня это заебало внатуре ахахах
+OKAY. Now we decompile our phase_4 
+Simply decompil function and see pritty easy task. Write python script which copy our function.
+It's just fibonacci function and we need to get 55 It is 9th number of sequense and answer 9
+
 
 5th level.
+Here we see some tricks with arrays. OKAY. The good solution - copy function in python and after it copy alghoritm.
+So we play with script and solve this problem. Answer - opekmq
+
+6th level.
+Here we have REALY coplex function. Sowe need a few hours, debugger and patient. We run and rerun this program. 
+In we end we have six numbers. Password - 4 2 6 3 1 5
+
 Given setuid binary exploit_me. Lets disassemble it:
 
     (gdb) set disassembly-flavor intel
