@@ -1,47 +1,51 @@
-We make network connection in VBox as "Bridge" or "Virtual network"
-After it we can scan ourselves with nmap to find Boot2root ip and open ports.
+# boot2root walkthrough
+
+First we need to configure network connection in VBox as "Bridge" or "Virtual network".
+Now we can scan VBox network with nmap to find boot2root ips and open ports.
 
 ![ip_network](screenshots/ip_network.png)
 
-We found web site under this server.
-So we scan 80 and 443 with dirb to find directories. It is output:
+There is a running web site, so we scan 80 and 443 with dirb to find available directories:
 
 
 ![nmap_result](screenshots/nmap_result.png)
 
 
-Now we have three new points: /fonts (http) and /phpmyadmin, /webmail, /forum (https).
-- Fonts are not interesting for us
-- phpmyadmin request creditnails. We will not brute it((
-- webmail same as above.
-- forum works and we can find some useful thigs inside.
+Now we have three attack vectors: /fonts (http) and /phpmyadmin, /webmail, /forum (https).
+- fonts directory is not interesting for us
+- phpmyadmin request creditnails. We wouldn't be able to brute it((
+- webmail is the same as phpmyadmin
+- forum is the only available vector which we can try to search for something interesting
 
-On form we see theme by lmezard called "Probleme login?".
-It's log and we search for some info. Here we have one string, that seems like password,
-if we try it to log in forum, we will succeed. Forum login/pass - lmezard:!q\]Ej?*5K5cy*AJ
+On the forum we can find "theme" created by lmezard called "Probleme login?".
+It's a log which wecan try to examine. Here we can find string which looks like user credentials:
+If we try it to log in on forum we will succeed. Forum login/pass - lmezard:!q\]Ej?*5K5cy*AJ
 
 ![forum](screenshots/forum.png)
 
-After it we can try to Contact and now have lmezard's E-mail adress. If we try to use it to auth /webmail, we will succeed again.
-/webmail login/pass - laurie@borntosec.net:!q\]Ej?*5K5cy*AJ
+After that we can try to access "Contact" tab and now have lmezard's E-mail adress. If we try to use it to auth /webmail we will succeed again.
+/webmail login/pass:
 
-In mailbox we have two messages, one of them includes creds for something called "database".
-It is /phpmyadmin login/pass root/Fg-'kKXBj87E:aJ$
+    laurie@borntosec.net:!q\]Ej?*5K5cy*AJ
+
+In mailbox we have two messages, one of them includes creds for something called "database" which is /phpmyadmin login/pass:
+
+    root/Fg-'kKXBj87E:aJ$
 
 ![message](screenshots/message.png)
 
-Now is time for Explotation. In phpmyadmin we can make unlimited SQL queries and it means that we could send a payload into a file.
-We only should find place where we have access to write files. But we have this place. Look again at dirb output.
-Trying several directories and drop php file: In one of directories var/www/forum/templates_c we have enougth rights.
+Now it is time for explotation. From phpmyadmin we are able to execute SQL queries which means that we can send some payload into a file.
+First we need find directory where we have access to write files. But we already have found one, look a dirb output again.
+Trying several directories and drop php file, inside one of the directories var/www/forum/templates_c we have enougth rights.
 
 ![drop](screenshots/drop.png)
 
-Ok. Now we need reverse shell, we can generate it in base64 with help of 'https://www.revshells.com/'.
+Now we need to craete reverse shell, we can generate it in base64 using 'https://www.revshells.com/'.
 And we drop full code with PHP method base64_decode in p.php, start nc, open p.php in browser, improve our shell with python.
 
 ![reverse_shell](screenshots/reverse_shell.png)
 
-Now we need to explore system. We look for /home directory, there is dir LOOKATME which contains file password. NICE user login/password lmezard:G!@M6f4Eatau{sF"
+Now we need to explore system. We can look at /home directory, there is dir LOOKATME which contains file password. NICE users login/password is lmezard:G!@M6f4Eatau{sF"
 
 ![lmezard's_home_dir](screenshots/lmezard's_home_dir.png)
 
