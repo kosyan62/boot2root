@@ -20,10 +20,10 @@ On form we see theme by lmezard called "Probleme login?".
 It's log and we search for some info. Here we have one string, that seems like password,
 if we try it to log in forum, we will succeed. Forum login/pass - lmezard:!q\]Ej?*5K5cy*AJ
 
+![forum](screenshots/forum.png)
+
 After it we can try to Contact and now have lmezard's E-mail adress. If we try to use it to auth /webmail, we will succeed again.
 /webmail login/pass - laurie@borntosec.net:!q\]Ej?*5K5cy*AJ
-
-![forum](screenshots/forum.png)
 
 In mailbox we have two messages, one of them includes creds for something called "database".
 It is /phpmyadmin login/pass root/Fg-'kKXBj87E:aJ$
@@ -60,10 +60,6 @@ We haven't passion to start binaries named bomb so let's look to strings. We can
 We had hint in README, so easily go to stage two. Let's find all passwords with hint. I thought...
 But it doesnt work for 2nd level. OK, we download radare2, and here we go.
 
-![turtle](screenshots/turtle.png)
-
-![SLASH_md5](screenshots/SLASH_md5.png)
-
 2nd level. 
 We have two simple functions. First, we read six numbers from stdin. If numbers count not equal six, we exlode bomb.
 Simply run debugger and watch at cmp instruction. At the end we have 1 2 6 24 120 720
@@ -85,14 +81,28 @@ OKAY. Now we decompile our phase_4
 Simply decompil function and see pritty easy task. Write python script which copy our function.
 It's just fibonacci function and we need to get 55 It is 9th number of sequense and answer 9
 
+![l4_recursive.png](screenshots/bomb/l4_recursive.png)
 
 5th level.
 Here we see some tricks with arrays. OKAY. The good solution - copy function in python and after it copy alghoritm.
 So we play with script and solve this problem. Answer - opekmq
 
+![l5_decompiled.png](screenshots/bomb/l5_decompiled.png)
+
 6th level.
 Here we have REALY coplex function. Sowe need a few hours, debugger and patient. We run and rerun this program. 
 In we end we have six numbers. Password - 4 2 6 3 1 5
+
+![l6_complex.png](screenshots/bomb/l6_complex.png)
+
+Now we have all passwords. We remove all whitespases and here we go, next login/password 
+And in thor acc we have turtle and README. README doesn't tell anything usefull, so we look at file. It's text with directions of tutle. In Mother Russia we did this things it school. ON PAPER. And now We just write python script.
+
+![turtle.dir](screenshots/turtle.png)
+
+We done with it to. Script works fine and we have some letters. Now we can MD5 them and get next login/pass 
+
+![SLASH_md5](screenshots/SLASH_md5.png)
 
 Given setuid binary exploit_me. Lets disassemble it:
 
@@ -195,8 +205,5 @@ Now we can perform our exploit:
     root
     #
 
-And in thor acc we have turtle and README. README doesn't tell anything usefull, so we look at file. It's text with directions of tutle. In Mother Russia we did this things it school.ON PAPER. And now We just write python script.
 
-![turtle.dir](screenshots/turtle.png)
- 
 
