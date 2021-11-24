@@ -99,7 +99,10 @@ In we end we have six numbers. Password - 4 2 6 3 1 5
 
 ![l6_complex.png](screenshots/bomb/l6_complex.png)
 
-Now we have all passwords. We remove all whitespases and here we go, next login/password 
+Now we have all passwords. We remove all whitespases and here we go, next login/password
+
+![thor_password.png](screenshots/thor_password.png)
+
 And in thor acc we have turtle and README. README doesn't tell anything usefull, so we look at file. It's text with directions of tutle. In Mother Russia we did this things it school. ON PAPER. And now We just write python script.
 
 ![turtle.dir](screenshots/turtle.png)
